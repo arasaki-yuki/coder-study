@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="?gazo">test</a>
+  <script>
+  (function(){
+    // 1. 現在のホストを取得
+    var host = location.host;
+
+    // 2. リファラのホストを取得
+    var referrer = document.referrer
+    var referrerHost = new URL(referrer).host;
+
+    // 3. 1. と 2. の比較
+    // 4. 3. がfalseの場合、それ以降何もしない（早期リターン）。 trueの場合5.に進む
+    if (host === referrerHost) {
+
+      // 5. リファラに「gazo」文字列の部分一致を見る
+      // 6. 5. がfalseの場合、それ以降何もしない（早期リターン）。 trueの場合7.に進む
+      var referrerHasTargetText = referrer.indexOf('gazo') !== -1;
+      if (referrerHasTargetText) {
+
+        // 7. sessionStorageの中身に「xxx」が入っているか確認
+        // 8. 7. があったら、それ以降何もしない（早期リターン）。無かったらFQがかかっていないということを意味しているので、sessionStorageに「xxx」を書き込む。
+        var ssHasTargetValue = sessionStorage.getItem('xxx');
+        if (ssHasTargetValue === null) {
+          sessionStorage.setItem('xxx', 'yyy');
+
+          // 9. 書き込んだら表示しても良いという変数「GmosspEnableAd」に「true」を代入する
+          window.GmosspEnableAd = true;
+          console.log(GmosspEnableAd);
+        }
+      }
+    }
+    // 10. 終了
+  })();
+  </script>
+</body>
+</html>

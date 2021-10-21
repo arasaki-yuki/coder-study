@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="?gazo">test</a>
+  <script>
+  (function(){
+    var host = location.host;
+    var referrer = document.referrer
+
+    var referrerHost = new URL(referrer).host;
+    if (host === referrerHost) {
+      var referrerHasTargetText = referrer.indexOf('gazo') !== -1;
+      if (referrerHasTargetText) {
+        var ssHasTargetValue = sessionStorage.getItem('xxx');
+        if (ssHasTargetValue === null) {
+          sessionStorage.setItem('xxx', 'yyy');
+
+          window.GmosspEnableAd = true;
+          console.log(GmosspEnableAd);
+        }
+      }
+    }
+  })();
+  </script>
+</body>
+</html>
