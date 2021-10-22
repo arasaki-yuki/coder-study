@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program2</title>
+</head>
+<body>
+  <h1>これはh1タグです。「<span>1</span>」</h1>
+  <p>h1>spanに入っている文字に「100」を足す計算をしなさい。</p>
+  <p>結果はこちらに表示:<span id="result"></span></p>
+  <script>
+    const h1Span = document.querySelector('h1 span');
+    const h1SpanNumber = h1Span.textContent;
+    const result = h1SpanNumber + 100;
+    document.querySelector('#result').textContent = result;
+  </script>
+</body>
+</html>
